@@ -16,6 +16,7 @@ module.exports = function Apn(app, conf) {
     cert = `${process.cwd()}/data/${env}/cert.pem`,
     key = `${process.cwd()}/data/${env}/key.pem`,
     production = (env === 'production'),
+    topic = null,
   } = getConf;
 
   const connection = () => new apn.Provider({ cert, key, production });
@@ -26,7 +27,6 @@ module.exports = function Apn(app, conf) {
       payload = {},
       badge = 1,
       sound = 'default',
-      topic = null,
       tokens = [],
     } = opts;
 
