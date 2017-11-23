@@ -8,12 +8,11 @@ const { expect } = chai;
 process.chdir(__dirname);
 
 const app = r2base();
-app.start().serve(r2apn, {}).into(app);
+app.start().serve(r2apn, { topic: 'com.test.app' }).into(app);
 const Apn = app.service('Apn');
 
 const data = {
   message: 'test title',
-  topic: 'com.test.app',
   badge: 2,
   sound: 'mySound.aiff',
   payload: {
