@@ -38,7 +38,7 @@ const sendOkMethod = () => (
     _regIds.forEach(regId => expect(data.tokens).to.include(regId));
     expect(message).to.be.instanceOf(apn.Notification);
     expect(message.payload).to.deep.equal({ action: 'test-action', email: 'test@app.com' });
-    expect(message.aps).to.deep.equal({ alert: 'test title', badge: 2, sound: 'mySound.aiff' });
+    expect(message.aps).to.deep.equal({ alert: 'test title', badge: 2, 'content-available': 1, sound: 'mySound.aiff' });
     expect(message.priority).to.equal(10);
     expect(message.topic).to.equal('com.test.app');
     return Promise.resolve({
