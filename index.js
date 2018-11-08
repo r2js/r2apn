@@ -31,12 +31,13 @@ module.exports = function Apn(app, conf) {
     } = opts;
 
     const note = new apn.Notification();
-    // Object.assign() ile çalışmadı
     note.alert = alert;
     note.payload = payload;
     note.badge = badge;
     note.sound = sound;
     note.topic = topic;
+    note.contentAvailable = 1;
+
     log('sending notification %o', note);
 
     return conn.send(note, tokens)
