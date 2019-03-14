@@ -20,9 +20,7 @@ module.exports = function Apn(app, conf) {
     providerOpts = {},
   } = getConf;
 
-  const connection = () => new apn.Provider(
-    Object.assign({ cert, key, production }, providerOpts),
-  );
+  const connection = () => new apn.Provider(Object.assign({ cert, key, production }, providerOpts));
 
   const sendNotification = conn => (opts) => {
     const {
