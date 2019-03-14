@@ -17,9 +17,12 @@ module.exports = function Apn(app, conf) {
     key = `${process.cwd()}/data/${env}/key.pem`,
     production = (env === 'production'),
     topic = null,
+    providerOpts = {},
   } = getConf;
 
-  const connection = () => new apn.Provider({ cert, key, production });
+  const connection = () => new apn.Provider(
+    Object.assign({ cert, key, production }, providerOpts),
+  );
 
   const sendNotification = conn => (opts) => {
     const {
